@@ -1,0 +1,255 @@
+<app-header></app-header>
+<div class="form-content">
+  <form (ngSubmit)="onSubmit()">
+    <!-- Name -->
+    <div class="form-head">Employee Payroll form</div>
+    <div class="row-content">
+      <label class="label text" for="name">First Name</label>
+      <input
+        [(ngModel)]="employee.firstName"
+        class="input"
+        type="text"
+        id="first"
+        name="firstName"
+        placeholder="Your name.."
+        required
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <div class="row-content">
+      <label class="label text" for="name">Last Name</label>
+      <input
+        [(ngModel)]="employee.lastName"
+        class="input"
+        type="text"
+        id="last"
+        name="lastName"
+        placeholder="Your name.."
+        required
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+
+    <!-- Profile -->
+    <div class="row-content">
+      <label class="label text" for="profile">Profile image</label>
+      <div class="profile-radio-content">
+        <label>
+          <input
+            [(ngModel)]="employee.imagePath"
+            type="radio"
+            name="profile"
+            id="profile1"
+            value="/Assets/profile-images/Ellipse -3.png"
+            required
+          />
+          <img
+            class="profile"
+            id="image1"
+            src="../../../assets/profile-images/Ellipse -3.png"
+          />
+        </label>
+        <label>
+          <input
+            [(ngModel)]="employee.imagePath"
+            type="radio"
+            name="profile"
+            id="profile2"
+            value="/Assets/profile-images/Ellipse 1.png"
+            required
+          />
+          <img
+            class="profile"
+            id="image2"
+            src="../../../assets/profile-images/Ellipse 1.png"
+          />
+        </label>
+        <label>
+          <input
+            [(ngModel)]="employee.imagePath"
+            type="radio"
+            name="profile"
+            id="profile3"
+            value="/Assets/profile-images/Ellipse -8.png"
+            required
+          />
+          <img
+            class="profile"
+            id="image3"
+            src="../../../assets/profile-images/Ellipse -8.png"
+          />
+        </label>
+        <label>
+          <input
+            [(ngModel)]="employee.imagePath"
+            type="radio"
+            name="profile"
+            id="profile4"
+            value="/Assets/profile-images/Ellipse -7.png"
+            required
+          />
+          <img
+            class="profile"
+            id="image4"
+            src="../../../assets/profile-images/Ellipse -7.png"
+          />
+        </label>
+      </div>
+    </div>
+
+    <!-- Gender, Department, Salary -->
+    <div class="row-content">
+      <label class="label text" for="gender">Gender</label>
+      <div>
+        <input
+          [(ngModel)]="employee.gender"
+          type="radio"
+          name="gender"
+          id="male"
+          value="male"
+        />
+        <label class="text" for="male">Male</label>
+        <input
+          [(ngModel)]="employee.gender"
+          type="radio"
+          name="gender"
+          id="female"
+          value="female"
+        />
+        <label class="text" for="female">Female</label>
+      </div>
+    </div>
+    <div class="row-content">
+      <label class="label text" for="department">Department</label>
+      <div>
+        <input
+          [(ngModel)]="employee.departments"
+          class="checkbox"
+          type="checkbox"
+          name="hr"
+          id="hr"
+          value="HR"
+          (click)="getVal(['HR'])"
+        />
+        <label class="text" for="hr">HR</label>
+        <input
+          [ngModel]="employee.departments"
+          class="checkbox"
+          type="checkbox"
+          name="sales"
+          id="sales"
+          value="Sales"
+          (click)="getVal(['Sales'])"
+        />
+        <label class="text" for="sales">Sales</label>
+        <input
+          class="checkbox"
+          type="checkbox"
+          name="finance"
+          id="finance"
+          value="Finance"
+        />
+        <label [(ngModel)]="employee.departments" class="text" for="finance"
+          >Finance</label
+        >
+        <input
+          class="checkbox"
+          type="checkbox"
+          name="engineer"
+          id="engineer"
+          value="Engineer"
+        />
+        <label [(ngModel)]="employee.departments" class="text" for="engineer"
+          >Engineer</label
+        >
+        <input
+          class="checkbox"
+          type="checkbox"
+          name="others"
+          id="others"
+          value="Others"
+        />
+        <label [(ngModel)]="employee.departments" class="text" for="others"
+          >Others</label
+        >
+      </div>
+    </div>
+    <div class="row-content">
+      <label class="label text" for="salary">Choose your salary: </label>
+      <input
+        [(ngModel)]="employee.salary"
+        class="input"
+        type="range"
+        name="salary"
+        id="salary"
+        min="300000"
+        max="500000"
+        step="100"
+        value="400000"
+        required
+      />
+    </div>
+
+    <!-- Date -->
+    <div class="row-content">
+      <label for="startDate" class="label-text">Start Date</label>
+      <mat-form-field>
+        <input
+          [(ngModel)]="employee.joiningDate"
+          matInput
+          [matDatepicker]="myDatePicker"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <mat-datepicker-toggle
+          [for]="myDatePicker"
+          matSuffix
+        ></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Notes -->
+    <div class="row-content">
+      <label class="label text" for="notes">Notes</label>
+      <textarea
+        [(ngModel)]="employee.notes"
+        class="input"
+        name="Notes"
+        id="notes"
+        placeholder=""
+        style="height: 100px"
+      ></textarea>
+    </div>
+
+    <!-- Submit, Cancel, Reset Buttons -->
+    <div class="buttonParent">
+      <a
+        routerLink="/home"
+        href="./header.component.html"
+        class="resetButton button cancelButton"
+        >Cancel</a
+      >
+      <div class="submit-reset">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="submitButton"
+          id="submitButton"
+          (click)="buttonClick()"
+        >
+          Submit
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="reset"
+          class="resetButton"
+          id="resetButton"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

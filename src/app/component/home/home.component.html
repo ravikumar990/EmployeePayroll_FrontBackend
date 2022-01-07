@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="main-content">
+  <div class="header-content">
+    <div class="emp-detail-text">
+      Employee Details
+      <!-- <div class="emp-count">10</div> -->
+    </div>
+    <a [routerLink]="['/add']" class="add-button">
+      <img src="../../../assets/icons/add-24px.svg" alt="Add button" />Add User
+    </a>
+  </div>
+
+  <div class="table-main">
+    <table id="display" class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>image</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Salary</th>
+          <th>Department</th>
+          <th>Notes</th>
+          <th>Start Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.empId }}</td>
+        <td>{{ employee.imagePath }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.gender }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>
+          {{ employee.departments }}
+        </td>
+        <td>{{ employee.notes }}</td>
+        <td>{{ employee.joiningDate }}</td>
+        <td>
+          <img src="../../../assets/icons/delete-black-18dp.svg" alt="delete" />
+          <img
+            (click)="updateEmployee(employee.empId)"
+            src="../../../assets/icons/create-black-18dp.svg"
+            alt="edit"
+          />
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
