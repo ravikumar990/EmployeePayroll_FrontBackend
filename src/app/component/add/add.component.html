@@ -106,7 +106,7 @@
           type="radio"
           name="gender"
           id="male"
-          value="male"
+          value="Male"
         />
         <label class="text" for="male">Male</label>
         <input
@@ -114,32 +114,30 @@
           type="radio"
           name="gender"
           id="female"
-          value="female"
+          value="Female"
         />
         <label class="text" for="female">Female</label>
       </div>
     </div>
     <div class="row-content">
-      <label class="label text" for="department">Department</label>
-      <div>
+      <label class="label text">Department</label>
+      <div *ngFor="let item of departmentsList">
         <input
-          [(ngModel)]="employee.departments"
+          [ngModel]="employee.departments"
           class="checkbox"
           type="checkbox"
-          name="hr"
-          id="hr"
-          value="HR"
-          (click)="getVal(['HR'])"
+          name="{{ item.name }}"
+          (change)="onChange()"
         />
-        <label class="text" for="hr">HR</label>
-        <input
+        <label class="text">{{ item.name }}</label>
+        <!-- <input
           [ngModel]="employee.departments"
           class="checkbox"
           type="checkbox"
           name="sales"
           id="sales"
           value="Sales"
-          (click)="getVal(['Sales'])"
+          (click)="getVal('Sales')"
         />
         <label class="text" for="sales">Sales</label>
         <input
@@ -171,7 +169,7 @@
         />
         <label [(ngModel)]="employee.departments" class="text" for="others"
           >Others</label
-        >
+        > -->
       </div>
     </div>
     <div class="row-content">

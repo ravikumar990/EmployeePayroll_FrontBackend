@@ -28,4 +28,11 @@ export class HomeComponent implements OnInit {
   updateEmployee(empId: number) {
     this.router.navigate(['update', empId]);
   }
+
+  deleteEmployee(empId: number) {
+    this.employeeService.deleteEmployee(empId).subscribe((data) => {
+      console.log(data);
+      this.getEmployees();
+    });
+  }
 }

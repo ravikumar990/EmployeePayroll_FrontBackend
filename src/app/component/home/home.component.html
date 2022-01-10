@@ -39,7 +39,11 @@
         <td>{{ employee.notes }}</td>
         <td>{{ employee.joiningDate }}</td>
         <td>
-          <img src="../../../assets/icons/delete-black-18dp.svg" alt="delete" />
+          <img
+            (click)="deleteEmployee(employee.empId)"
+            src="../../../assets/icons/delete-black-18dp.svg"
+            alt="delete"
+          />
           <img
             (click)="updateEmployee(employee.empId)"
             src="../../../assets/icons/create-black-18dp.svg"
